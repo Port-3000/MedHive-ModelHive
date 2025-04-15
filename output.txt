@@ -1,0 +1,44 @@
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+Cell In[29], line 6
+      3 feature_names = X.columns
+      5 # Create DataFrame for feature importance
+----> 6 feature_importance = pd.DataFrame({
+      7     'Feature': feature_names,
+      8     'Coefficient': coefficients
+      9 })
+
+File ~/Projects/Port3000/MedHive-ModelHive/.venv/lib/python3.10/site-packages/pandas/core/frame.py:778, in DataFrame.__init__(self, data, index, columns, dtype, copy)
+    772     mgr = self._init_mgr(
+    773         data, axes={"index": index, "columns": columns}, dtype=dtype, copy=copy
+    774     )
+    776 elif isinstance(data, dict):
+    777     # GH#38939 de facto copy defaults to False only in non-dict cases
+--> 778     mgr = dict_to_mgr(data, index, columns, dtype=dtype, copy=copy, typ=manager)
+    779 elif isinstance(data, ma.MaskedArray):
+    780     from numpy.ma import mrecords
+
+File ~/Projects/Port3000/MedHive-ModelHive/.venv/lib/python3.10/site-packages/pandas/core/internals/construction.py:503, in dict_to_mgr(data, index, columns, dtype, typ, copy)
+    499     else:
+    500         # dtype check to exclude e.g. range objects, scalars
+    501         arrays = [x.copy() if hasattr(x, "dtype") else x for x in arrays]
+--> 503 return arrays_to_mgr(arrays, columns, index, dtype=dtype, typ=typ, consolidate=copy)
+
+File ~/Projects/Port3000/MedHive-ModelHive/.venv/lib/python3.10/site-packages/pandas/core/internals/construction.py:114, in arrays_to_mgr(arrays, columns, index, dtype, verify_integrity, typ, consolidate)
+    111 if verify_integrity:
+    112     # figure out the index, if necessary
+    113     if index is None:
+--> 114         index = _extract_index(arrays)
+    115     else:
+    116         index = ensure_index(index)
+
+File ~/Projects/Port3000/MedHive-ModelHive/.venv/lib/python3.10/site-packages/pandas/core/internals/construction.py:677, in _extract_index(data)
+    675 lengths = list(set(raw_lengths))
+    676 if len(lengths) > 1:
+--> 677     raise ValueError("All arrays must be of the same length")
+    679 if have_dicts:
+    680     raise ValueError(
+    681         "Mixing dicts with non-Series may lead to ambiguous ordering."
+    682     )
+
+ValueError: All arrays must be of the same length
