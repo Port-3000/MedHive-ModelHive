@@ -27,3 +27,4 @@ typing_extensions
 tzdata
 uvicorn
 joblib
+pydantic_settings
