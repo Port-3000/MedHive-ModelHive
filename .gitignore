@@ -1,8 +1,8 @@
-
-BreastCancer/data/data.csv
-SymptomAnalysis/data/Final_Augmented_dataset_Diseases_and_Symptoms.csv
-SymptomAnalysis/data/rows_and_cols.txt
+**/*.csv
 *.csv
+SymptomAnalysis/data/
+BreastCancer/data/
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
