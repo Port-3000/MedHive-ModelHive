@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pandas
+numpy
+langchain
+langchain-core
+langchain-groq
+langchain-astradb
+langchain-text-splitters
+pydantic
+python-dotenv

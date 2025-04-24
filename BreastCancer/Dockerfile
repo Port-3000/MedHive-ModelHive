@@ -1,4 +1,3 @@
-
 FROM python:3.10-slim
 
 ENV TRANSFORMERS_CACHE=/tmp/.cache
@@ -20,7 +19,7 @@ RUN pip install --upgrade pip setuptools wheel && \
 COPY . .
 
 # Create necessary directories
-RUN mkdir -p /models
+RUN mkdir -p /app/models
 
 # Set proper permissions
 RUN chmod -R 755 /app
